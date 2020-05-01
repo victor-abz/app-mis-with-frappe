@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include contact_app *.css
+recursive-include contact_app *.csv
+recursive-include contact_app *.html
+recursive-include contact_app *.ico
+recursive-include contact_app *.js
+recursive-include contact_app *.json
+recursive-include contact_app *.md
+recursive-include contact_app *.png
+recursive-include contact_app *.py
+recursive-include contact_app *.svg
+recursive-include contact_app *.txt
+recursive-exclude contact_app *.pyc

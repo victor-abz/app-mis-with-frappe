@@ -1,0 +1,109 @@
+{
+ "actions": [],
+ "allow_events_in_timeline": 1,
+ "allow_rename": 1,
+ "creation": "2020-04-19 13:54:46.098991",
+ "doctype": "DocType",
+ "document_type": "Setup",
+ "engine": "InnoDB",
+ "field_order": [
+  "first_name",
+  "middle_name",
+  "last_name",
+  "email_id",
+  "gender",
+  "image",
+  "is_primary_contact",
+  "position",
+  "amended_from",
+  "phone_number"
+ ],
+ "fields": [
+  {
+   "fieldname": "first_name",
+   "fieldtype": "Data",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "label": "First Name",
+   "oldfieldname": "first_name",
+   "oldfieldtype": "Data",
+   "reqd": 1
+  },
+  {
+   "fieldname": "middle_name",
+   "fieldtype": "Data",
+   "label": "Middle Name"
+  },
+  {
+   "bold": 1,
+   "fieldname": "last_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Last Name",
+   "oldfieldname": "last_name",
+   "oldfieldtype": "Data",
+   "reqd": 1
+  },
+  {
+   "fieldname": "email_id",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Email",
+   "reqd": 1
+  },
+  {
+   "fieldname": "gender",
+   "fieldtype": "Link",
+   "label": "Gender",
+   "options": "Gender"
+  },
+  {
+   "fieldname": "image",
+   "fieldtype": "Attach Image",
+   "label": "Image",
+   "print_hide": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_primary_contact",
+   "fieldtype": "Check",
+   "label": "Is Primary Contact",
+   "oldfieldname": "is_primary_contact",
+   "oldfieldtype": "Select"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "CRMContact",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "position",
+   "fieldtype": "Data",
+   "label": "Position"
+  },
+  {
+   "fieldname": "phone_number",
+   "fieldtype": "Data",
+   "label": "Phone"
+  }
+ ],
+ "icon": "fa fa-user",
+ "image_field": "image",
+ "istable": 1,
+ "links": [],
+ "modified": "2020-04-27 10:22:47.684588",
+ "modified_by": "Administrator",
+ "module": "Contact App",
+ "name": "CRMContact",
+ "name_case": "Title Case",
+ "owner": "Administrator",
+ "permissions": [],
+ "route": "allContact",
+ "show_name_in_global_search": 1,
+ "sort_field": "modified",
+ "sort_order": "ASC"
+}

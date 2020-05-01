@@ -1,0 +1,30 @@
+<!-- show-sidebar -->
+<!-- add-breadcrumbs -->
+
+<div class="row border-bottom rounded" style="margin-top: 20px; margin-bottom: 20px;">
+	<div class="col-sm-3">
+		<a href="/company/id/?name={{ doc.name }}">
+			{% if doc.logo|string() == 'None' %}
+			<img src="/images/company-thumb.jpg" alt="" class="img-responsive" style="max-height: 200px">
+			{% elif doc.logo|string() == '' %}
+			<img src="/images/company-thumb.jpg" alt="" class="img-responsive" style="max-height: 200px">
+			{% else %}
+			<img src={{doc.logo}} alt="" class="img-responsive" style="max-height: 200px">
+			{% endif %}
+		</a>
+	</div>
+	<div class="col-sm-6">
+		<a href="/company/id/?name={{ doc.name }}">
+			<h4>{{ doc.company_name }}</h4>
+		</a>
+		<p>{{ doc.registration }}</p>
+		<!-- <p>{{ doc.description|string() }}</p> -->
+		{% if doc.description|string() == 'None' %}
+		<p>No Description</p>
+		{% else %}
+		<p>{{ (doc.description[:200] + "...")
+					if doc.description|len > 200 else doc.description }}</p>
+		{% endif %}
+	</div>
+	<div class="col-xs-3 n-p-r n-p-l"> <span>{{ doc.contacts|length }} contacts</span> </div>
+</div>

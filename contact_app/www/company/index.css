@@ -1,0 +1,29 @@
+.popup {
+    /* max-width: 100%; */
+    width: 100%;
+    background: #fff;
+    -webkit-transition: all .2s ease-in;
+    -o-transition: all .2s ease-in;
+    transition: all .2s ease-in;
+    border-radius: 6px;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.2);
+    padding: 20px 0;
+}
+
+.closelink h6 {
+    font-size: 18px;
+    font-weight: 400;
+    margin: 0;
+    margin-bottom: 20px;
+}
+.closelink h6 a {
+    color: rgb(0, 0, 0);
+    border-radius: 50%;
+    border: 1px solid rgb(0, 0, 0);
+    margin-right: 10px;
+    display: inline-block;
+    height: 26px;
+    width: 26px;
+    text-align: center;
+}

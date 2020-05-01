@@ -1,0 +1,81 @@
+{
+ "actions": [],
+ "creation": "2020-04-19 17:37:44.928278",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "contact_id",
+  "description",
+  "start",
+  "ends",
+  "amended_from",
+  "route"
+ ],
+ "fields": [
+  {
+   "fieldname": "description",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Description",
+   "reqd": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Booking",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "route",
+   "fieldtype": "Data",
+   "label": "route"
+  },
+  {
+   "fieldname": "ends",
+   "fieldtype": "Datetime",
+   "label": "Ends"
+  },
+  {
+   "fieldname": "start",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "Start",
+   "reqd": 1
+  },
+  {
+   "fieldname": "contact_id",
+   "fieldtype": "Data",
+   "label": "Contact",
+   "reqd": 1
+  }
+ ],
+ "has_web_view": 1,
+ "links": [],
+ "modified": "2020-04-21 17:32:55.452301",
+ "modified_by": "Administrator",
+ "module": "Contact App",
+ "name": "Booking",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "route": "booking",
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}
