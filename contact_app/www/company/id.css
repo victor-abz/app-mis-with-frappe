@@ -626,13 +626,6 @@ label {
 }
 
 
-.compny-profile .modal form textarea {
-	border: none;
-	font-size: 14px;
-	font-weight: 400;
-	height: 100px;
-}
-
 .compny-profile .modal ul li {
 	list-style: none;
 }

@@ -1,14 +1,6 @@
 frappe.ready(function() {
     url = window.location.params
-    //   frappe.call({
-    //     method:"contact_app.www.company.get_company_list",
-    //     args: {
-    //         doctype: 'company'
-    //     },
-    //     callback:function(r){
-    //         console.log(r)
-    //     }
-    // });
+
     var next_start = {{ next_start or 0 }};
     var result_wrapper = $(".website-list .result");
     var data = $.extend(frappe.utils.get_query_params(), {
@@ -18,14 +10,10 @@ frappe.ready(function() {
         pathname: location.pathname,
     });
     $.ajax({
-        url:"/api/method/frappe.www.list.get",
-        data: {
-            doctype: "company",
-            limit_start: next_start,
-        },
+        url:"/api/method/frappe.www.list.get?order_by=company_name%20desc",
+        data: data,
         statusCode: {
             200: function(data) {
-                console.log('>>>>>>',data)
                 var data = data.message;
                 next_start = data.next_start;
                 $.each(data.result, function(i, d) {
@@ -35,10 +23,6 @@ frappe.ready(function() {
             }
         },
         dataType: "json",
-        // success: function(data) {
-        //     console.log('>>><<',data)
-		// 	// window.render_product_list(data.message || []);
-		// }
     })
     	var toggle_more = function(show) {
 		if (!show) {
@@ -52,20 +36,5 @@ frappe.ready(function() {
 			window.history.back();
 	 	});
 	}
-    // $.ajax({
-	// 	method: "GET",
-	// 	url: "/api/resource/company",
-	// 	// data: {
-	// 	// 	cmd: "erpnext.templates.pages.product_search.get_product_list",
-	// 	// 	start: window.start,
-	// 	// 	search: window.search,
-	// 	// 	product_group: window.product_group
-	// 	// },
-	// 	dataType: "json",
-	// 	success: function(data) {
-    //         console.log('>>><<',data)
-	// 		// window.render_product_list(data.message || []);
-	// 	}
-	// })
         
 });

@@ -8,15 +8,6 @@ WEEKDAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", 
 
 no_cache = 1
 
-
-# def get_context(context):
-# 	is_enabled = frappe.db.get_single_value('Appointment Booking Settings', 'enable_scheduling')
-	# if is_enabled:
-	# 	return context
-	# else:
-	# 	frappe.local.flags.redirect_location = '/404'
-	# 	raise frappe.Redirect
-
 @frappe.whitelist(allow_guest=True)
 def get_appointment_settings():
 	settings = frappe.get_doc('Appointment Booking Settings')

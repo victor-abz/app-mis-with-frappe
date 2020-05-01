@@ -39,11 +39,11 @@ app_license = "MIT"
 # ----------
 
 # application home page (will override Website Settings)
-# home_page = "login"
+home_page = "homepage"
 
 # website user home page (by Role)
 # role_home_page = {
-#	"Role": "home_page"
+# 	"Website User": "company"
 # }
 
 # Website user home page (by function)
@@ -139,3 +139,4 @@ app_license = "MIT"
 #   'contact_app.www.featured.add_users_to_context',
 #   'contact_app.www.company.add_company_to_context'
 # ]
+# boot_session = "contact_app.utils.boot_session"

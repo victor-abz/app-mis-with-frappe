@@ -16,14 +16,13 @@ def get_context(context):
 	context['Gender'] = frappe.get_all('Gender')
 
 @frappe.whitelist()
-def get_role_profile(company, inputFirstName,inputLastName,inputEmail,inputGender,primaryCheck,inputPosition,inputPhone):
+def add_company_contact(company, inputFirstName,inputLastName,inputEmail,inputGender,inputPosition,inputPhone):
 	company = frappe.get_doc('company', company)
 	company.append('contacts', {
 		'first_name': inputFirstName,
 		'last_name': inputLastName,
 		'email_id': inputEmail,
 		'gender': inputGender,
-		'is_primary_contact': primaryCheck,
 		'position': inputPosition,
 		'phone_number': inputPhone
 	})
@@ -42,3 +41,16 @@ def attach_file_to_contact(filedata, contact_name):
 		contact = frappe.get_doc("CRMContact", contact_name)
 		contact.image = filedoc
 		contact.save(ignore_permissions=True)
+
+@frappe.whitelist()
+def send_email(email_address):
+	frappe.sendmail(recipients=email_address,
+		subject="Subject of the email",
+		message= "Content of the email")
+
+@frappe.whitelist()
+def send_notifications(emailForm):
+	msg=json.loads(emailForm)
+	frappe.sendmail(recipients=msg.get('receiver'),
+		subject=msg.get('subject'),
+		message= msg.get('body'))
