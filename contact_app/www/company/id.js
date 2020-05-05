@@ -75,10 +75,15 @@ frappe.ready(function() {
   });
   $("#sendEmail").click(function() {
       let emailForm = get_form_data();
+      const docParam = new URLSearchParams(window.location.search);
+        const myParam = docParam.get('name');
+        console.log(myParam)
       frappe.call({
-        method: "contact_app.www.company.id.send_notifications",
+        method: "contact_app.www.company.id.send_email",
         args: {
-          emailForm: emailForm
+          emailForm: emailForm,
+          company_id: myParam,
+          email_id: document.getElementById('email_receiver').value
         },
         callback: function(r) {
             if (!r.exc) {
@@ -90,6 +95,26 @@ frappe.ready(function() {
         }
     });
   })
+
+  const sidebar_menu_items = [
+        `<a href="/dashboard" class="sidebar-item ">
+                    <span>Dashboard</span>
+        </a>`,
+        `<a href="/company" class="sidebar-item selected ">
+                    <span>Companies</span>
+        </a>`,
+        `<a href="/desk#List/Event/Calendar/Default" class="sidebar-item ">
+                    <span>Calendar</span>
+        </a>`,
+        `<a href="/desk#List/Appointment/List" class="sidebar-item ">
+                    <span>Appointments</span>
+        </a>`,
+        ,
+        `<a href="/desk#List/Communication/List" class="sidebar-item ">
+					<span>Messages</span>
+		</a>`,
+        ]
+    sidebar_menu_items.forEach((item) =>  $( ".list-unstyled" ).append( item ))
 });
 
 function setupReader(file, input) {
@@ -114,10 +139,9 @@ function get_form_data() {
 
 function setup_search_params(param) {
     event.preventDefault()
-    console.log(param)
     let email_input = document.getElementById("email_receiver");
     email_input.value = param;
-    email_input.disabled = true;
+    // email_input.disabled = true;
     $('#sendMailModal').modal('show');
 }
 

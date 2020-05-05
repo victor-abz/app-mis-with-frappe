@@ -8893,3 +8893,19 @@ footer.sticky-footer .copyright{
 body.sidebar-toggled footer.sticky-footer{
     width:100%
 }
+.sidebar-item {
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 1px;
+    display: flex;
+    padding: 10px 15px;
+    border-radius: 4px;
+    text-decoration: none;
+    cursor: pointer;
+    text-rendering: optimizelegibility;
+    outline: 0;
+    color: #36414c;
+}
+.sidebar-item.selected {
+    background-color: #e7f5ff;
+}

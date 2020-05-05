@@ -36,5 +36,22 @@ frappe.ready(function() {
 			window.history.back();
 	 	});
 	}
-        
+         const sidebar_menu_items = [
+        `<a href="/dashboard" class="sidebar-item ">
+					<span>Dashboard</span>
+        </a>`,
+        `<a href="/company" class="sidebar-item selected ">
+					<span>Companies</span>
+        </a>`,
+        `<a href="/desk#List/Event/Calendar/Default" class="sidebar-item ">
+					<span>Calendar</span>
+        </a>`,
+        `<a href="/desk#List/Appointment/List" class="sidebar-item ">
+					<span>Appointments</span>
+        </a>`,
+        `<a href="/desk#List/Communication/List" class="sidebar-item ">
+					<span>Messages</span>
+		</a>`,
+    ]
+    sidebar_menu_items.forEach((item) =>  $( ".list-unstyled" ).append( item ))   
 });

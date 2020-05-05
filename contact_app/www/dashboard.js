@@ -10,7 +10,6 @@ frappe.ready(function() {
             if (!r.exc) {
                 labels = r.message.map(item => item.communication_date);
                 values = r.message.map(item => item.count);
-                console.log(labels, values)
             } else {
                 frappe.msgprint(__("An error occurred <br /> " + r.exc));
             }
@@ -41,4 +40,23 @@ frappe.ready(function() {
 
         })
     })
+    const sidebar_menu_items = [
+        `<a href="/dashboard" class="sidebar-item selected ">
+					<span>Dashboard</span>
+        </a>`,
+        `<a href="/company" class="sidebar-item ">
+					<span>Companies</span>
+        </a>`,
+        `<a href="/desk#List/Event/Calendar/Default" class="sidebar-item ">
+					<span>Calendar</span>
+        </a>`,
+        `<a href="/desk#List/Appointment/List" class="sidebar-item ">
+					<span>Appointments</span>
+        </a>`,
+        ,
+        `<a href="/desk#List/Communication/List" class="sidebar-item ">
+					<span>Messages</span>
+		</a>`,
+    ]
+    sidebar_menu_items.forEach((item) =>  $( ".list-unstyled" ).append( item ))
 })

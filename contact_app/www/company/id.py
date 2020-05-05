@@ -3,6 +3,7 @@ import frappe, json
 from frappe import _
 import frappe.www.list
 from frappe.utils.file_manager import save_file
+from frappe.core.doctype.communication.email import make
 
 no_cache = 1
 no_sitemap = 1
@@ -48,9 +49,19 @@ def send_email(email_address):
 		subject="Subject of the email",
 		message= "Content of the email")
 
+
 @frappe.whitelist()
-def send_notifications(emailForm):
+def send_email(emailForm, company_id, email_id):
 	msg=json.loads(emailForm)
-	frappe.sendmail(recipients=msg.get('receiver'),
-		subject=msg.get('subject'),
-		message= msg.get('body'))
+	comm = make(
+		doctype = "company",
+		name = company_id,
+		subject = msg.get('subject'),
+		content = msg.get('body'),
+		sender = 'svicky.shema@gmail.com',
+		recipients = email_id,
+		communication_medium = "Email",
+		sent_or_received = "Sent",
+		send_email = True
+	)
+	return comm
