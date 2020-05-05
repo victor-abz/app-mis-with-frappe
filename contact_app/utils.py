@@ -8,5 +8,5 @@ no_cache = 1
 no_sitemap = 1
 
 def boot_session(bootinfo):
-    bootinfo['home_page'] = 'dashboard'
+    bootinfo['home_page'] = '/dashboard'
     return bootinfo

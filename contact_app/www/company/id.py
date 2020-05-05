@@ -53,15 +53,19 @@ def send_email(email_address):
 @frappe.whitelist()
 def send_email(emailForm, company_id, email_id):
 	msg=json.loads(emailForm)
-	comm = make(
-		doctype = "company",
-		name = company_id,
-		subject = msg.get('subject'),
-		content = msg.get('body'),
-		sender = 'svicky.shema@gmail.com',
-		recipients = email_id,
-		communication_medium = "Email",
-		sent_or_received = "Sent",
-		send_email = True
-	)
-	return comm
+	frappe.sendmail(recipients=msg.get('receiver'),
+		subject=msg.get('subject'),
+		message= msg.get('body'))
+
+	# comm = make(
+	# 	doctype = "company",
+	# 	name = company_id,
+	# 	subject = msg.get('subject'),
+	# 	content = msg.get('body'),
+	# 	sender = 'svicky.shema@gmail.com',
+	# 	recipients = email_id,
+	# 	communication_medium = "Email",
+	# 	sent_or_received = "Sent",
+	# 	send_email = True
+	# )
+	# return comm
