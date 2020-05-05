@@ -1,28 +1,31 @@
 frappe.ready(function() {
-    // frappe.call({
-    //     method: "contact_app.www.dashboard.get_communication_data",
-    //     args: {
-    //         company: 'companyId',
-    //     },
-    //     callback: function(r) {
-    //         if (!r.exc) {
-
-    //         } else {
-    //             frappe.msgprint(__("An error occurred <br /> " + r.exc));
-    //         }
-    //     }
-    // });
+    let labels;
+    let values
+    frappe.call({
+        method: "contact_app.www.dashboard.get_communication_data",
+        args: {
+            doctype: 'Communication'
+        },
+        callback: function(r) {
+            if (!r.exc) {
+                labels = r.message.map(item => item.communication_date);
+                values = r.message.map(item => item.count);
+                console.log(labels, values)
+            } else {
+                frappe.msgprint(__("An error occurred <br /> " + r.exc));
+            }
+        }
+    });
     $.getScript("https://cdn.jsdelivr.net/npm/frappe-charts@1.1.0/dist/frappe-charts.min.iife.js", function() {
-
         const data = {
-            labels: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+            labels: labels,
             datasets: [{
                 name: "Contact",
-                values: [18, 40, 30, 35, 8, 52, 17, 0]
+                values: values
             }],
             yMarkers: [{
                 label: "Threshold",
-                value: 20,
+                value: 5,
                 options: {
                     labelPos: 'left'
                 } // default: 'right'
